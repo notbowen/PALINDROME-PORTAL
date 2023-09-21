@@ -1,8 +1,10 @@
-name: Test the PALINDROME portal
+name: Test the PALINDROME Portal
 
 on:
     issues:
         types: [closed]
+    push:
+        branches: [main]
 
 jobs:
   test:
@@ -10,6 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test the PALINDROME portal
-        run: | 
+        run: |
           C:\msys64\usr\bin\wget.exe '''${{ secrets.PORTAL_URL }}/${{ secrets.PORTAL_PASSWORD }}''' -O test -d -v
           cat test
